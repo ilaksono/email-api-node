@@ -4,10 +4,9 @@ import App from './App';
 
 ReactDOM.hydrate(
   <React.StrictMode>
-
-          <App />
+    <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.querySelector('#root')
 );
 
 // If you want to start measuring performance in your app, pass a function
