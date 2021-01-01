@@ -6,9 +6,7 @@ const PORT = 8001;
 const api_key = process.env.MAILGUN_API_KEY;
 
 const mailgun = require("mailgun-js");
-// const DOMAIN = process.env.DOMAIN_ADDRESS;
-// console.log(process.env.DOMAIN_ADDRESS);
-const DOMAIN = 'laks.ca'
+const DOMAIN = process.env.DOMAIN_ADDRESS;
 const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
 const data = {
   from: 'Excited User <brotherlaksono@gmail.com>',
