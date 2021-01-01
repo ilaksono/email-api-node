@@ -1,9 +1,15 @@
+// import React from 'react';
 require('dotenv').config();
+import ReactDOMServer from 'react-dom/server';
+import App from './src/App';
 const app = require('express')();
 const bodyParser = require('body-parser');
 
 const PORT = 8001;
 const api_key = process.env.MAILGUN_API_KEY;
+
+const fs = require('fs');
+const path = require('path');
 
 const mailgun = require("mailgun-js");
 const DOMAIN = process.env.DOMAIN_ADDRESS;
@@ -14,10 +20,20 @@ const data = {
   subject: 'Hello',
   text: 'Testing some Mailgun awesomness!'
 };
-mg.messages().send(data, function (error, body) {
-  console.log(body, error);
+// mg.messages().send(data, function (error, body) {
+//   console.log(body, error);
+// });
+app.use('^/$', (req, res, next) => {
+  fs.readFile(path.resolve('./public/index.html'), 'utf-8', (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send('could not load index');
+    }
+    return res.send(data.replace(`<div id='root'></div>`,
+      `<div id='root'>${ReactDOMServer
+        .renderToString(<App />)}</div>`));
+  });
 });
-
 
 
 // const domain = process.env.MAILGUN_DOMAIN_ADD;
