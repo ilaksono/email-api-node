@@ -36,14 +36,13 @@ const EmailView = () => {
     // if (!control.name) return setErr({ type: 'name', msg: 'Please tell me your name' });
     // if (!control.text) return setErr({ type: 'text', msg: 'Please add a message body' });
     setAnim(true);
-    // axios
-    //   .post('/email', { ...data })
-    //   .then((data) => {
+    axios
+      .post('/email', { ...data })
+      .then((data) => {
 
-    //     console.log(data.data);
-    //   })
-    //   .catch(er => console.log(er));
-    console.log(data, anim);
+        console.log(data.data);
+      })
+      .catch(er => console.log(er));
     setTimeout(() => {
       setAnim(false);
     }, 750)

@@ -49,7 +49,7 @@ export default function SimpleGrow({anim, color}) {
       <div className={classes.container}>
         <Grow
           in={anim}
-          {...(anim ? { timeout: 300 } : {})}
+          {...(anim ? { timeout: 500 } : {})}
         >
           <Done elevation={4} style={{
             color,
