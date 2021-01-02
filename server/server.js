@@ -14,7 +14,7 @@ import fs from 'fs';
 // import mailgun from 'mailgun-js';
 const app = express();
 const mailgun = require("mailgun-js");
-const PORT = 8001;
+const PORT = process.env.PORT || 8001;
 
 const api_key = process.env.MAILGUN_API_KEY;
 const DOMAIN = process.env.DOMAIN_ADDRESS;
