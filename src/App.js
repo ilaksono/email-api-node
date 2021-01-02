@@ -6,7 +6,7 @@ const App = () => {
 
   return <div>
     <div>
-      Welcome to Ian Laksono's Email Sender.
+      Send Ian Laksono an email.
       </div>
     <EmailView />
   </div>;

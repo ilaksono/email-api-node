@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import CheckAnimation from './CheckAnimation';
 
 let schema = yup.object().shape({
   name: yup.string().required(),
@@ -22,7 +23,7 @@ const initErr = {
   msg: ''
 };
 const EmailView = () => {
-
+  const [anim, setAnim] = useState(false);
   // const [control, setControl] = useState(initControl);
   // const [err, setErr] = useState(initErr);
 
@@ -30,18 +31,24 @@ const EmailView = () => {
   //   setControl(prev => ({ ...prev, [event.target.name]: event.target.value }));
   // };
 
-  const submitForm = (data) => {
+  const submitForm = (data, a) => {
 
     // if (!control.name) return setErr({ type: 'name', msg: 'Please tell me your name' });
     // if (!control.text) return setErr({ type: 'text', msg: 'Please add a message body' });
-    console.log(data);
-    axios
-      .post('/email', { ...data })
-      .then((data) => {
+    setAnim(true);
+    // axios
+    //   .post('/email', { ...data })
+    //   .then((data) => {
 
-        console.log(data.data);
-      })
-      .catch(er => console.log(er));
+    //     console.log(data.data);
+    //   })
+    //   .catch(er => console.log(er));
+    console.log(data, anim);
+    setTimeout(() => {
+      setAnim(false);
+    }, 750)
+    a.resetForm();
+
   };
 
   return <div className='email-container'>
@@ -72,7 +79,7 @@ const EmailView = () => {
               onChange={handleChange}
               value={values.name}
               type="text"
-              placeholder="Beautiful Person"
+              placeholder="Sender's Name"
               name='name'
               isValid={touched.name && !errors.name}
               isInvalid={!!errors.name}
@@ -107,6 +114,7 @@ const EmailView = () => {
         </Form>)
       }
     </Formik>
+    <CheckAnimation anim={anim} setAnim={setAnim} color='green'/>
   </div>;
 };
 

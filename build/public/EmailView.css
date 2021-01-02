@@ -1,0 +1,13 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.email-container {
+  width: 400px;
+}
+
+.email-form {
+  margin: 25px;
+}

@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start",
+    "start": "node server/index.js",
     "build": "react-scripts build",
     "ssr": "node server/index.js",
     "webpack:server": "webpack --config webpack.server.js --watch",
     "webpack:client": "webpack --config webpack.client.js --watch",
     "webpack:start": "nodemon --watch build --exec node build/bundle.js",
-    "dev": "npm-run-all webpack:*"
+    "dev": "npm-run-all webpack:*",
+    "client": "react-scripts start"
   },
   "proxy": "http://localhost:8001",
   "keywords": [],

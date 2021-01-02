@@ -1,5 +1,5 @@
 // import React from 'react';
-// require('dotenv').config();
+require('dotenv').config();
 import 'babel-polyfill';
 // import 'babel-core/register';
 import React from 'react';
@@ -18,7 +18,6 @@ const PORT = 8001;
 
 const api_key = process.env.MAILGUN_API_KEY;
 const DOMAIN = process.env.DOMAIN_ADDRESS;
-console.log(api_key);
 
 // app.use('^/$', (req, res, next) => {
 //   fs.readFile(path.resolve('./public/index.html'), 'utf-8', (err, data) => {
@@ -104,19 +103,17 @@ app.get('*', (req, res) => {
 // });
 
 app.post('/email', (req, res) => {
-  console.log(req.body);
   
   const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
   const data = {
-    from: req.body.email || 'Lakso-noreply <brotherlaksono@gmail.com>',
-    to: 'ianlaksono@gmail.com',
+    from: req.body.email || 'Lakso-noreply <ianlaksono@gmail.com>',
+    to: 'brotherlaksono@gmail.com',
     subject: `Yo Ian What\'s Goood - ${req.body.name}`,
     text: req.body.text
   };
-  console.log(data);
-  // mg.messages().send(data, function (error, body) {
-  //   console.log(body, error);
-  // });
+  mg.messages().send(data, function (error, body) {
+    // console.log(body, error);
+  });
   res.status(200);
 });
 

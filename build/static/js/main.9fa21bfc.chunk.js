@@ -1,0 +1,2 @@
+(this["webpackJsonpemail-sender-node"]=this["webpackJsonpemail-sender-node"]||[]).push([[0],{9:function(e,n,r){"use strict";r.r(n);var t=r(0),s=r(1),c=r.n(s),d=r(3),i=function(){return Object(t.jsx)("div",{children:"Hello from server rendering"})};r.n(d).a.hydrate(Object(t.jsx)(c.a.StrictMode,{children:Object(t.jsx)(i,{})}),document.getElementById("root"))}},[[9,1,2]]]);
+//# sourceMappingURL=main.9fa21bfc.chunk.js.map
