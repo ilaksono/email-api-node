@@ -5,9 +5,6 @@ import Link from 'next/link';
 const App = () => {
 
   return <div>
-    <div>
-      Send Ian Laksono an email.
-      </div>
     <EmailView />
   </div>;
 

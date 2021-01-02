@@ -61,6 +61,7 @@ app.get('*', (req, res) => {
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
     crossorigin="anonymous"
   />
+  <title>Email Ian Laksono</title>
   <link rel="stylesheet" href="EmailView.css"
     </head>
     <body>
