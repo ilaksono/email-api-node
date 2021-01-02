@@ -13,21 +13,13 @@ import path from 'path';
 import fs from 'fs';
 // import mailgun from 'mailgun-js';
 const app = express();
-
+const mailgun = require("mailgun-js");
 const PORT = 8001;
-// const api_key = process.env.MAILGUN_API_KEY;
-// const mailgun = require("mailgun-js");
-// const DOMAIN = process.env.DOMAIN_ADDRESS;
-// const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
-const data = {
-  from: 'Excited User <brotherlaksono@gmail.com>',
-  to: 'ianlaksono@gmail.com',
-  subject: 'Hello',
-  text: 'Testing some Mailgun awesomness!'
-};
-// mg.messages().send(data, function (error, body) {
-//   console.log(body, error);
-// });
+
+const api_key = process.env.MAILGUN_API_KEY;
+const DOMAIN = process.env.DOMAIN_ADDRESS;
+console.log(api_key);
+
 // app.use('^/$', (req, res, next) => {
 //   fs.readFile(path.resolve('./public/index.html'), 'utf-8', (err, data) => {
 //     if (err) {
@@ -64,12 +56,20 @@ app.get('*', (req, res) => {
   const html = `
   <html>
     <head>
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="EmailView.css"
     </head>
     <body>
     <div id='root'>
     ${content}
     </div>
-    <script src="./client_bundle.js"></script>
+    <script src="client_bundle.js"></script>
+
     </body>
   </html>
   `;
@@ -105,6 +105,19 @@ app.get('*', (req, res) => {
 
 app.post('/email', (req, res) => {
   console.log(req.body);
+  
+  const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
+  const data = {
+    from: req.body.email || 'Lakso-noreply <brotherlaksono@gmail.com>',
+    to: 'ianlaksono@gmail.com',
+    subject: `Yo Ian What\'s Goood - ${req.body.name}`,
+    text: req.body.text
+  };
+  console.log(data);
+  // mg.messages().send(data, function (error, body) {
+  //   console.log(body, error);
+  // });
+  res.status(200);
 });
 
 
