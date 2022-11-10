@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
   },
-  container: {
+  checkContainer: {
     display: 'flex',
     width: "100%",
     justifyContext: 'center',
@@ -37,19 +37,19 @@ export default function SimpleGrow({anim, color}) {
   const classes = useStyles();
   return (
     <div className={classes.root}
-      style={{
-        position: 'fixed',
-        top: '15%',
-        left: '43%',
-        // margin: '0 auto',
-        zIndex: anim ? '3' : '-1'
-      }}
+      // style={{
+      //   position: 'fixed',
+      //   top: '15%',
+      //   left: '43%',
+      //   // margin: '0 auto',
+      //   zIndex: anim ? '3' : '-1'
+      // }}
     >
       
-      <div className={classes.container}>
+      <div className={classes.checkContainer}>
         <Grow
           in={anim}
-          {...(anim ? { timeout: 500 } : {})}
+          {...((anim) ? { timeout: 500 } : {})}
         >
           <Done elevation={4} style={{
             color,
