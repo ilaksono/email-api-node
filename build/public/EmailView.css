@@ -6,6 +6,7 @@
 }
 .email-container {
   width: 400px;
+  z-index: 0;
 }
 
 .email-form {
